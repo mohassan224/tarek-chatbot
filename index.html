@@ -363,11 +363,13 @@
     </section>
 
     <div id="chatbot" class="chatbot-container">
-        <div class="chatbot-header" onclick="toggleChatbot()">
+        <div class="chatbot-header">
             🤖 مساعد طارق إسماعيل العقاري
+            <button id="close-chatbot" title="إغلاق">❌</button>
         </div>
         <div class="chatbot-body">
             <div id="chatbot-messages" class="chatbot-messages"></div>
+            <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
             <div class="chatbot-input-area">
                 <input id="chatbot-input" type="text" placeholder="اسأل عن شيء..."
                     onkeydown="if(event.key==='Enter'){handleChatbotInput()}" />
@@ -376,8 +378,7 @@
         </div>
     </div>
 
-    <a href="https://wa.me/201022776369" target="_blank" id="whatsapp-button"
-        style="position: fixed; bottom: 100px; right: 20px; background: #25D366; color: white; padding: 12px 20px; border-radius: 50px; font-size: 18px; z-index: 9999; text-decoration: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+    <a href="https://wa.me/201022776369" target="_blank" id="whatsapp-button">
         💬 واتساب
     </a>
 
@@ -386,13 +387,13 @@
     <audio id="typingSound"
         src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_23b3b05a6d.mp3?filename=typing-typing-6763.mp3"></audio>
 
-
     <script>
         const chatbotMessages = document.getElementById("chatbot-messages");
         const chatbotInput = document.getElementById("chatbot-input");
         const chatbot = document.getElementById("chatbot");
         const chatSound = document.getElementById("chatSound");
         const typingSound = document.getElementById("typingSound");
+        const chatbotSuggestions = document.getElementById("chatbot-suggestions");
 
         const botResponses = {
             "من أنت": { text: "أنا مساعد شركة طارق إسماعيل الذكي. جاهز أجاوب على استفساراتك 👨‍💼" },
@@ -423,6 +424,8 @@
             "استثمار": { text: "💰 نوفر فرص استثمار عقاري قوية لتحقيق أعلى عائد على استثمارك." },
             "إدارة": { text: "🏢 خدماتنا تشمل إدارة الممتلكات أيضًا لضمان الحفاظ على العقار وزيادة قيمته." },
             "استشارة": { text: "🧠 خبراؤنا جاهزون لتقديم استشارات عقارية تساعدك تتخذ القرار الصحيح." },
+            "الساعة كام": { text: new Date().toLocaleTimeString('ar-EG') },
+            "النهاردة كام": { text: new Date().toLocaleDateString('ar-EG') },
             "افتراضي": { text: "🚫 لم أتمكن من فهم سؤالك بدقة. حاول استخدام كلمات مثل: 'عنوان'، 'حجز'، 'مشروعات'، 'رقم'، إلخ." }
         };
 
@@ -450,10 +453,14 @@
             appendMessage(reply.text || reply, "bot-msg", "images/robot.gif", reply.link, reply.image);
             try {
                 chatSound.play();
+                speak(reply.text);
             } catch { }
+
+            saveToLocalStorage();
         }
 
         function appendMessage(text, className, avatar, link = null, image = null) {
+            text = text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
             const msg = document.createElement("div");
             msg.className = className;
             let content = `<img src="${avatar}" alt="avatar" class="chat-avatar"><span>${text}</span>`;
@@ -465,13 +472,41 @@
         }
 
         async function getChatbotReply(input) {
-            const key = Object.keys(botResponses).find(k => input.includes(k));
+            const key = Object.keys(botResponses).find(k => new RegExp(k, 'i').test(input));
             return botResponses[key] || botResponses["افتراضي"];
         }
 
         function toggleChatbot() {
             chatbot.classList.toggle("collapsed");
         }
+
+        document.getElementById("close-chatbot").onclick = toggleChatbot;
+
+        function saveToLocalStorage() {
+            localStorage.setItem("chat-history", chatbotMessages.innerHTML);
+        }
+
+        function loadChatHistory() {
+            const history = localStorage.getItem("chat-history");
+            if (history) chatbotMessages.innerHTML = history;
+        }
+
+        function speak(text) {
+            if (!window.speechSynthesis) return;
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = "ar-EG";
+            speechSynthesis.speak(utter);
+        }
+
+        function loadSuggestions() {
+            const suggestions = ["عنوان", "حجز", "مشروعات", "استشارة", "رقم", "خريطة"];
+            chatbotSuggestions.innerHTML = suggestions.map(s => `<button onclick="chatbotInput.value='${s}';handleChatbotInput()">${s}</button>`).join(' ');
+        }
+
+        window.onload = () => {
+            loadChatHistory();
+            loadSuggestions();
+        };
 
         window.fetch = (...args) => {
             console.warn("❌ تم تعطيل جميع عمليات fetch داخل الشات بوت", args);
