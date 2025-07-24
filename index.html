@@ -415,12 +415,16 @@
         `;
             chatbotMessages.appendChild(typingDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            typingSound.play();
+            try {
+                typingSound.play();
+            } catch { }
 
             const reply = await getChatbotReply(userText);
             typingDiv.remove();
             appendMessage(reply.text || reply, "bot-msg", "images/robot.gif", reply.link, reply.image);
-            chatSound.play();
+            try {
+                chatSound.play();
+            } catch { }
         }
 
         function appendMessage(text, className, avatar, link = null, image = null) {
@@ -442,6 +446,11 @@
         function toggleChatbot() {
             chatbot.classList.toggle("collapsed");
         }
+
+        window.fetch = (...args) => {
+            console.warn("❌ تم تعطيل جميع عمليات fetch داخل الشات بوت", args);
+            return Promise.reject("fetch blocked");
+        };
     </script>
     <script>
         function goToStep(stepNum) {
