@@ -362,22 +362,27 @@
         </form>
     </section>
 
-    <div id="chatbot" class="chatbot-container">
+    <div id="chatbot" class="chatbot-container chatbot-glass">
         <div class="chatbot-header">
             🤖 مساعد طارق إسماعيل العقاري
-            <button id="close-chatbot" title="إغلاق">❌</button>
+            <button id="close-chatbot" title="إغلاق">×</button>
         </div>
         <div class="chatbot-body">
             <div id="chatbot-messages" class="chatbot-messages"></div>
-            <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
+            <div class="chatbot-suggestions" id="chatbot-suggestions">
+                <button onclick="quickReply('عنوان')">📍 العنوان</button>
+                <button onclick="quickReply('رقم')">📞 رقم</button>
+                <button onclick="quickReply('شاليهات')">🏖️ شاليهات</button>
+                <button onclick="quickReply('مواعيد')">🕐 المواعيد</button>
+            </div>
             <div class="chatbot-input-area">
+                <img src="images/user-avatar.svg" class="chat-avatar default-user-avatar" alt="user">
                 <input id="chatbot-input" type="text" placeholder="اسأل عن شيء..."
                     onkeydown="if(event.key==='Enter'){handleChatbotInput()}" />
-                <button onclick="handleChatbotInput()">إرسال</button>
+                <button onclick="handleChatbotInput()">📨</button>
             </div>
         </div>
     </div>
-
     <a href="https://wa.me/201022776369" target="_blank" id="whatsapp-button">
         💬 واتساب
     </a>
@@ -512,6 +517,18 @@
             console.warn("❌ تم تعطيل جميع عمليات fetch داخل الشات بوت", args);
             return Promise.reject("fetch blocked");
         };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const typingSound = document.getElementById("typingSound");
+            if (typingSound) typingSound.remove(); // حذف الصوت
+        });
+
+        function quickReply(text) {
+            document.getElementById("chatbot-input").value = text;
+            handleChatbotInput();
+        }
+
+
     </script>
     <script>
         function goToStep(stepNum) {

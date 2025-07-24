@@ -1165,15 +1165,15 @@ button:hover {
   display: none;
 }
 .chatbot-header {
-  background: #1c1c1c;
   color: white;
-  padding: 10px 12px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgb(28, 28, 28);
+  padding: 10px 12px;
 }
 .chatbot-toggle {
   background: none;
@@ -1211,10 +1211,11 @@ button:hover {
 }
 .chatbot-input button {
   border: none;
-  background: #28a745;
+  background: #000000;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 12px;
   cursor: pointer;
+  gap: 15px;
 }
 
 .chat-avatar img {
@@ -1303,15 +1304,15 @@ button:hover {
 .typing-dots {
   display: inline-flex;
   gap: 4px;
-  padding: 8px;
+  padding: 12px;
   background-color: #f1f1f1;
   border-radius: 16px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .typing-dots span {
-  width: 3px;
-  height: 3px;
+  width: 6px;
+  height: 6px;
   background: #999;
   border-radius: 50%;
   animation: blink 1.2s infinite;
