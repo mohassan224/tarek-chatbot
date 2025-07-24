@@ -434,19 +434,26 @@
 
         let botResponses = {};
 
-        fetch("chatbot-responses.json")
-            .then(res => res.json())
-            .then(data => botResponses = data)
-            .catch(() => {
-                botResponses = {
-                    "عنوان": { "text": "📍 مدينة 6 أكتوبر - الحصري عمارة 36 أمام جامعة 6 أكتوبر" },
-                    "تواصل": { "text": "📞 يمكنك التواصل على 010 22776369 أو واتساب مباشر" },
-                    "خدمات": { "text": "🏢 نقدم: بيع وحدات - استثمار عقاري - إدارة الممتلكات - استشارات" },
-                    "مواعيد": { "text": "🕐 يوميًا من 10 صباحًا حتى 8 مساءً" },
-                    "اسمك": { "text": "أنا مساعد شركة طارق إسماعيل الذكي 💬" },
-                    "افتراضي": { "text": "🚫 عذرًا، لم أفهم سؤالك. جرب سؤال آخر أو اتصل بنا مباشرة." }
-                }
-            });
+        async function loadChatbotResponses() {
+            const fallbackResponses = {
+                "عنوان": { "text": "📍 مدينة 6 أكتوبر - الحصري عمارة 36 أمام جامعة 6 أكتوبر" },
+                "تواصل": { "text": "📞 يمكنك التواصل على 010 22776369 أو واتساب مباشر" },
+                "خدمات": { "text": "🏢 نقدم: بيع وحدات - استثمار عقاري - إدارة الممتلكات - استشارات" },
+                "مواعيد": { "text": "🕐 يوميًا من 10 صباحًا حتى 8 مساءً" },
+                "اسمك": { "text": "أنا مساعد شركة طارق إسماعيل الذكي 💬" },
+                "افتراضي": { "text": "🚫 عذرًا، لم أفهم سؤالك. جرب سؤال آخر أو اتصل بنا مباشرة." }
+            };
+
+            try {
+                const res = await fetch("chatbot-responses.json");
+                if (!res.ok) throw new Error("Failed to load JSON");
+                const data = await res.json();
+                botResponses = data;
+            } catch (err) {
+                console.warn("Fallback to default responses:", err.message);
+                botResponses = fallbackResponses;
+            }
+        }
 
         async function handleChatbotInput() {
             const userText = chatbotInput.value.trim();
@@ -455,13 +462,12 @@
             appendMessage(userText, "user-msg", "images/user-avatar.svg");
             chatbotInput.value = "";
 
-            // typing indicator
             const typingDiv = document.createElement("div");
             typingDiv.className = "bot-msg typing-msg";
             typingDiv.innerHTML = `
-  <img src="images/.gif" class="chat-avatar" />
-  <span class="typing-dots"><span></span><span></span><span></span></span>
-`;
+            <img src="images/.gif" class="chat-avatar" />
+            <span class="typing-dots"><span></span><span></span><span></span></span>
+        `;
             chatbotMessages.appendChild(typingDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             typingSound.play();
@@ -484,6 +490,11 @@
         }
 
         async function getChatbotReply(input) {
+            // إذا وجد رد مباشر بالكلمات المحفوظة
+            const key = Object.keys(botResponses).find(k => input.includes(k));
+            if (key) return botResponses[key];
+
+            // محاولة الرد عبر API
             try {
                 const res = await fetch("https://tarek-chatbot.vercel.app/api/chat", {
                     method: "POST",
@@ -493,13 +504,16 @@
                 const data = await res.json();
                 return { text: data.reply };
             } catch (e) {
-                return { text: "⚠️ حدث خطأ أثناء الاتصال بالخدمة." };
+                return botResponses["افتراضي"] || { text: "⚠️ حدث خطأ أثناء الاتصال بالخدمة." };
             }
         }
 
         function toggleChatbot() {
             chatbot.classList.toggle("collapsed");
         }
+
+        // تحميل الردود عند بداية الصفحة
+        loadChatbotResponses();
     </script>
     <script>
         function goToStep(stepNum) {
