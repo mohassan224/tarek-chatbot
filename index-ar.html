@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة طارق إسماعيل للاستثمار العقاري</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Tarek Ismail's real estate investment services.">
+    <meta name="keywords" content="real estate, investment, Tarek Ismail, property, investment services">
+    <meta name="author" content="Tarek Ismail">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+</head>
+
+<body>
+    <header class="custom-header">
+        <div class="header-inner">
+            <!-- زر القائمة للموبايل -->
+            <button id="menuToggle" class="menu-btn" aria-label="فتح القائمة">
+                ☰
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <button class="close-btn" aria-label="إغلاق القائمة">✕</button>
+
+                <ul>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">خدماتنا</a></li>
+                    <li><a href="#">مشروعاتنا</a></li>
+                    <li><a href="#">الأخبار</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
+                </ul>
+            </nav>
+
+            <!-- اللوجو -->
+            <div class="logo">
+                <img src="images/لوجو دهبى  عربى.png" alt="Logo" />
+            </div>
+
+            <!-- أدوات المساعدة -->
+            <div class="header-tools">
+                <div class="language-search">
+                    <div class="search-wrapper">
+                        <button class="search-btn" id="searchToggle" aria-label="بحث">
+                            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M10 2a8 8 0 105.293 14.707l5 5a1 1 0 001.414-1.414l-5-5A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z" />
+                            </svg>
+                        </button>
+                        <input id="search" type="text" class="search-input" placeholder="ابحث هنا">
+                    </div>
+                    <div class="separator"></div>
+                    <a href="#" class="lang-switch">EN</a>
+                    <div class="separator" id="main-separator"></div>
+                    <a href="#" class="lang-switch">AR</a>
+                    <div class="separator"></div>
+                </div>
+            </div>
+            <a href="#" class="interest-btn">تسجيل الاهتمام</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- خلفية الفيديو -->
+        <video class="hero-bg-video" autoplay muted loop playsinline>
+            <source src="images/TAMER AMIN.mp4" type="video/mp4" />
+            المتصفح لا يدعم الفيديو.
+        </video>
+
+        <!-- المحتوى فوق الفيديو -->
+        <div class="hero-content">
+            <div class="w-btn-wrapper">
+                <a href="#more" class="w-btn us-btn-style_1">
+                    <span class="w-btn-label">شاهد المزيد من أعمالنا</span>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="about-section">
+        <div class="about-container reverse-row">
+
+            <!-- الفيديو -->
+            <div class="about-media">
+                <video controls autoplay muted loop>
+                    <source src="images/TAMER AMIN.mp4" type="video/mp4" />
+                    المتصفح لا يدعم تشغيل الفيديو.
+                </video>
+            </div>
+
+            <!-- النص -->
+            <div class="about-text">
+                <h2>من نحن</h2>
+                <p>
+                    شركة طارق إسماعيل للاستثمار العقاري هي شركة مصرية رائدة تعمل على تلبية احتياجات السوق العقاري المحلي
+                    من خلال تقديم حلول متكاملة في مجال الاستثمار والتسويق العقاري. تركّز أنشطتنا بشكل خاص على بيع
+                    الشاليهات والوحدات المصيفية الفاخرة في منطقتي الساحل الشمالي ورأس سدر، مع الحرص على تقديم تجربة
+                    استثمارية وسكنية فريدة تجمع بين الموقع المتميز، والتصميم العصري، والقيمة المستدامة.
+
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="services-section">
+        <h2 class="services-title">خدماتنا</h2>
+        <div class="service-card">
+            <div class="icon">
+                <img src="images/invest.gif" alt="استثمار عقاري" />
+            </div>
+            <h3>استثمار عقاري</h3>
+            <p>نقدم استشارات متكاملة في مجال الاستثمار العقاري لضمان تحقيق أعلى عائد على الاستثمار.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">
+                <img src="images/manage.gif" alt="إدارة الممتلكات" />
+            </div>
+            <h3>إدارة الممتلكات</h3>
+            <p>نقدم خدمات إدارة الممتلكات لضمان الحفاظ على قيمة العقار وزيادة العائد الاستثماري.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">
+                <img src="images/consult.gif" alt="استشارات عقارية" />
+            </div>
+            <h3>استشارات عقارية</h3>
+            <p>فريقنا من الخبراء يقدم استشارات متخصصة لمساعدتك في اتخاذ قرارات استثمارية مدروسة.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon">
+                <img src="images/house_13297395.gif" alt="شاليهات الساحل" />
+            </div>
+            <h3>بيع وحدات فندقية فاخرة</h3>
+            <p>نوفر لك أفضل المشاريع على البحر مباشرة بمواقع مميزة وأسعار تنافسية.</p>
+        </div>
+    </section>
+
+    <section id="projects-trigger" class="projects-section">
+
+        <!-- Background Images -->
+        <img class="image-layer image-1"
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
+            alt="مشروع 1">
+        <img class="image-layer image-2"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
+            alt="مشروع 2">
+
+        <div class="project-caption caption-1">
+            <h2>اكتشف رفاهية الحياة في <span>أكوا باي</span></h2>
+            <p>منتجع صُمم ليكون ملاذك الفاخر بين الرمال والبحر.</p>
+            <a href="#contact" class="cta-btn">احجز الآن</a>
+        </div>
+
+        <div class="project-caption caption-2">
+            <h2>استرخِ في قلب <span>رأس سدر</span></h2>
+            <p>مزيج من الطبيعة البكر والهدوء الحقيقي.</p>
+            <a href="#contact" class="cta-btn">احجز الآن</a>
+        </div>
+
+
+        <!-- Progress Bar -->
+        <div class="progress-bar"></div>
+        <div class="progress-fill" id="progressFill"></div>
+
+        <!-- Project Names -->
+        <div class="project-name" id="name1">أكوا باي<br>الساحل</div>
+        <div class="project-name" id="name2">سفن ستارز<br>رأس سدر</div>
+
+    </section>
+
+    <section class="news-section">
+        <h2>أحدث الأخبار</h2>
+
+        <div class="swiper news-swiper">
+            <div class="swiper-wrapper">
+                <article class="news-card swiper-slide">
+                    <img src="images/new.gif" alt="خبر 1">
+                    <h3>إطلاق مشروع جديد في الساحل الشمالي</h3>
+                    <p>نعلن عن بدء العمل في مشروع أكوا باي الجديد، والذي يقدم تجربة استثمارية فريدة...</p>
+                    <a href="#" class="read-more">اقرأ المزيد</a>
+                </article>
+                <article class="news-card swiper-slide">
+                    <img src="images/new.gif" alt="خبر 1">
+                    <h3>إطلاق مشروع جديد في الساحل الشمالي</h3>
+                    <p>نعلن عن بدء العمل في مشروع أكوا باي الجديد، والذي يقدم تجربة استثمارية فريدة...</p>
+                    <a href="#" class="read-more">اقرأ المزيد</a>
+                </article>
+
+                <article class="news-card swiper-slide">
+                    <img src="images/new.gif" alt="خبر 2">
+                    <h3>خصومات خاصة لفترة محدودة</h3>
+                    <p>استغل عروضنا الحصرية على الشاليهات في رأس سدر خلال هذا الشهر فقط...</p>
+                    <a href="#" class="read-more">اقرأ المزيد</a>
+                </article>
+                <article class="news-card swiper-slide">
+                    <img src="images/new.gif" alt="خبر 2">
+                    <h3>خصومات خاصة لفترة محدودة</h3>
+                    <p>استغل عروضنا الحصرية على الشاليهات في رأس سدر خلال هذا الشهر فقط...</p>
+                    <a href="#" class="read-more">اقرأ المزيد</a>
+
+                </article>
+                <!-- المزيد من الأخبار -->
+            </div>
+
+            <!-- أزرار التنقل -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <!-- نقاط التنقل (Pagination) -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="clients-section">
+        <h2>أبرز عملائنا</h2>
+
+        <div class="swiper clients-grid-swiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 1" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 2" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 3" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 4" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 5" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 4" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 5" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 4" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 5" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 4" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 5" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 4" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 5" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 4" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 5" />
+                </div>
+                <div class="swiper-slide client-logo">
+                    <img src="images/tarek ismail.jpg" alt="Client 6" />
+                </div>
+
+                <!-- زوّد عدد العملاء براحتك -->
+            </div>
+
+            <!-- أزرار لو حابب -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <form class="form-container">
+            <h2 class="form-title">سجل حجزك معانا</h2>
+
+            <!-- Step 1 -->
+            <div class="form-step" id="step1">
+                <label for="name">الاسم الكامل</label>
+                <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
+
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" name="phone" placeholder="01XXXXXXXX" required>
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
+                <label for="location">البلد</label>
+                <input type="text" id="location" name="location" placeholder="أدخل موقعك الحالي" required>
+                <button type="button" onclick="goToStep(2)">التالي</button>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="form-step hidden" id="step2">
+                <label for="type">المشروع</label>
+                <select id="type" name="type" required>
+                    <option value="">اختر المشروع</option>
+                    <option>اكوا باي</option>
+                    <option>سيفن ستارز</option>
+                    <option>اخري</option>
+
+                </select>
+                <label for="city">المدينة</label>
+                <input type="text" id="city" name="city" placeholder="اسم المدينة" required>
+
+                <button type="button" onclick="goToStep(1)">السابق</button>
+                <button type="button" onclick="goToStep(3)">التالي</button>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="form-step hidden" id="step3">
+                <label for="description">ملحوظات</label>
+                <textarea id="description" name="description" rows="4" placeholder="ملحوظات إضافية"></textarea>
+
+                <label for="images">رفع صورة البطاقة</label>
+                <input type="file" id="images" name="images" multiple accept="image/*">
+
+                <button type="button" onclick="goToStep(2)">السابق</button>
+                <button type="submit">إرسال العقار</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <h2 class="form-title">تواصل معنا</h2>
+            <p>يسعدنا التواصل معكم عبر الوسائل التالية:</p>
+            <ul class="contact-list">
+                <li><img src="images/call.png" alt="Phone" class="icon"> <a href="tel:+201234567890">+20 123 456
+                        7890</a></li>
+                <li><img src="images/mail.png" alt="Email" class="icon"> <a
+                        href="mailto:info@tarek-ismail.com">info@tarek-ismail.com</a></li>
+                <li><img src="images/pin.png" alt="Location" class="icon"> ١ شارع الاستثمار، القاهرة، مصر</li>
+                <li><img src="images/whatsapp.png" alt="WhatsApp" class="icon"> <a href="https://wa.me/201234567890"
+                        target="_blank">راسلنا على واتساب</a></li>
+                <li><img src="images/facebook.png" alt="Facebook" class="icon"> <a
+                        href="https://facebook.com/tarekismailrealestate" target="_blank">صفحتنا الرسمية</a></li>
+                <li><img src="images/instagram.png" alt="Instagram" class="icon"> <a
+                        href="https://instagram.com/tarekismail.realestate" target="_blank">@tarekismail.realestate</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="map-container">
+
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13797.663934942485!2d30.9489961!3d29.975031!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14585b4e21443c0f%3A0x9c0c1836c8aeb5b0!2z2KfZhNiz2YXYsdmD2Kkg2KfZhNmF2LnZh9iq2Kkg2KfZhNi52YTZiNmE2YrYqSDYp9mE2YXYs9mK2KfYqCDZhNmE2YXZhNmK2YjZhNmE2KfYqg!5e0!3m2!1sar!2seg!4v1721800000000!5m2!1sar!2seg"
+            width="100%" height="300" style="border:0; border-radius: 12px; margin-top: 2rem;" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div style="text-align:center; margin-top: 1rem;">
+            <a class="btn-direction" href="https://maps.google.com/?q=29.975031009734927,30.948996119750277"
+                target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:bold">
+                فتح الموقع على الخريطة
+            </a>
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <section class="whatsapp floating section">
+        <a href="https://wa.me/201022776369" class="whatsapp-float" target="_blank" aria-label="راسلنا على واتساب">
+            <img src="images/whatsapp.png" alt="واتساب">
+        </a>
+
+    </section>
+
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            👋 مرحبًا بك
+            <button class="chatbot-toggle" onclick="toggleChatbot()">−</button>
+        </div>
+        <div class="chatbot-body" id="chatbot-messages">
+            <div class="bot-msg">
+                <img src="images/robot.gif" alt="bot" class="chat-avatar">
+                <span>أهلاً بك في شركة طارق إسماعيل! كيف يمكنني مساعدتك؟</span>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="اكتب سؤالك...">
+            <button onclick="handleChatbotInput()">إرسال</button>
+        </div>
+    </div>
+    <audio id="chatSound" src="images/message.wav"></audio>
+    <audio id="typingSound"
+        src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c063bbd2f8.mp3?filename=ui-confirmation-alert-21856.mp3"></audio>
+
+    <script>
+        const chatbotMessages = document.getElementById("chatbot-messages");
+        const chatbotInput = document.getElementById("chatbot-input");
+        const chatbot = document.getElementById("chatbot");
+        const chatSound = document.getElementById("chatSound");
+        const typingSound = document.getElementById("typingSound");
+
+        let botResponses = {};
+
+        fetch("chatbot-responses.json")
+            .then(res => res.json())
+            .then(data => botResponses = data)
+            .catch(() => {
+                botResponses = {
+                    "عنوان": { "text": "📍 مدينة 6 أكتوبر - الحصري عمارة 36 أمام جامعة 6 أكتوبر" },
+                    "تواصل": { "text": "📞 يمكنك التواصل على 010 22776369 أو واتساب مباشر" },
+                    "خدمات": { "text": "🏢 نقدم: بيع وحدات - استثمار عقاري - إدارة الممتلكات - استشارات" },
+                    "مواعيد": { "text": "🕐 يوميًا من 10 صباحًا حتى 8 مساءً" },
+                    "اسمك": { "text": "أنا مساعد شركة طارق إسماعيل الذكي 💬" },
+                    "افتراضي": { "text": "🚫 عذرًا، لم أفهم سؤالك. جرب سؤال آخر أو اتصل بنا مباشرة." }
+                }
+            });
+
+        function handleChatbotInput() {
+            const userText = chatbotInput.value.trim();
+            if (!userText) return;
+
+            appendMessage(userText, "user-msg", "images/user-avatar.svg");
+            chatbotInput.value = "";
+
+            // typing indicator
+            const typingDiv = document.createElement("div");
+            typingDiv.className = "bot-msg typing-msg";
+            typingDiv.innerHTML = '<img src="images/bot-avatar.svg" class="chat-avatar" /><span>...</span>';
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            typingSound.play();
+
+            setTimeout(() => {
+                typingDiv.remove();
+                const reply = getChatbotReply(userText);
+                appendMessage(reply.text || reply, "bot-msg", "images/bot-avatar.svg", reply.link, reply.image);
+                chatSound.play();
+            }, 1200);
+        }
+
+        function appendMessage(text, className, avatar, link = null, image = null) {
+            const msg = document.createElement("div");
+            msg.className = className;
+            let content = `<img src="${avatar}" alt="avatar" class="chat-avatar"><span>${text}</span>`;
+            if (link) content += `<br><a href="${link}" target="_blank">رابط</a>`;
+            if (image) content += `<br><img src="${image}" class="chat-thumb" alt="صورة">`;
+            msg.innerHTML = content;
+            chatbotMessages.appendChild(msg);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function getChatbotReply(input) {
+            const t = input.toLowerCase();
+            for (const key in botResponses) {
+                if (key !== "افتراضي" && t.includes(key)) return botResponses[key];
+            }
+            return botResponses["افتراضي"] || { "text": "..." };
+        }
+
+        function toggleChatbot() {
+            chatbot.classList.toggle("collapsed");
+        }
+    </script>
+    <script>
+        function goToStep(stepNum) {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.add('hidden'));
+            document.getElementById(`step${stepNum}`).classList.remove('hidden');
+        }
+
+        document.querySelector('.form-container').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            console.log(Object.fromEntries(formData.entries()));
+            alert('تم إرسال النموذج بنجاح!');
+        });
+    </script>
+
+    <script>
+        // زر المينيو للموبايل
+        const menuBtn = document.getElementById("menuToggle");
+        const nav = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            menuBtn.classList.toggle("open");
+            document.body.classList.toggle("menu-open");
+        });
+    </script>
+
+    <script>
+        const customHeader = document.querySelector(".custom-header");
+        const heroSection = document.querySelector(".hero-section");
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+
+            if (scrollY + 100 < heroBottom) {
+                customHeader.classList.remove("header-hidden");
+
+                if (scrollY > lastScrollY && scrollY > 50) {
+                    customHeader.classList.add("header-scrolled-down");
+                    customHeader.classList.remove("header-fixed-top");
+                } else {
+                    customHeader.classList.add("header-fixed-top");
+                    customHeader.classList.remove("header-scrolled-down");
+                    customHeader.style.top = "0";
+
+                }
+            } else {
+                customHeader.classList.add("header-hidden");
+                customHeader.classList.remove("header-scrolled-down");
+                customHeader.classList.remove("header-fixed-top");
+
+
+            }
+
+            lastScrollY = scrollY;
+        });
+    </script>
+
+    <script>
+        // فتح و غلق البحث
+        const searchToggle = document.getElementById("searchToggle");
+        const searchWrapper = searchToggle.closest(".search-wrapper");
+
+        searchToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            searchWrapper.classList.toggle("active");
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!searchWrapper.contains(e.target)) {
+                searchWrapper.classList.remove("active");
+            }
+        });
+    </script>
+
+    <script>
+        const closeBtn = document.querySelector(".close-btn");
+
+        closeBtn.addEventListener("click", () => {
+            nav.classList.remove("active");
+            menuBtn.classList.remove("open");
+            document.body.classList.remove("menu-open");
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".service-card"), {
+            max: 15,
+            speed: 400
+        });
+    </script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        ScrollTrigger.create({
+            trigger: "#projects-trigger",
+            start: "top top",
+            end: "+=2000", // المدة اللي هيقعد فيها السيكشن ثابت، ممكن تزودها حسب عدد الصور
+            scrub: true,
+            pin: true, // 🔥 ده اللي بيخلي السيكشن يتثبت مكانه أثناء السكرول
+        });
+
+        // باقي الأنيميشنز زي ما هي
+        gsap.to(".image-2", {
+            scrollTrigger: {
+                trigger: "#projects-trigger",
+                start: "top top",
+                end: "+=2000", // خلي نفس القيمة هنا
+                scrub: 1,
+            },
+            clipPath: "inset(0% 0% 0% 0%)",
+            ease: "power2.out"
+        });
+
+        gsap.to("#progressFill", {
+            scrollTrigger: {
+                trigger: "#projects-trigger",
+                start: "top top",
+                end: "+=2000",
+                scrub: 1,
+            },
+            height: "100%",
+            ease: "none"
+        });
+
+        gsap.to("#name1", {
+            scrollTrigger: {
+                trigger: "#projects-trigger",
+                start: "top top",
+                end: "+=1000",
+                scrub: 1,
+                toggleActions: "play none none reverse",
+            },
+            opacity: 1
+        });
+
+        gsap.to("#name1", {
+            scrollTrigger: {
+                trigger: "#projects-trigger",
+                start: "+=1000",
+                end: "+=2000",
+                scrub: 1,
+            },
+            opacity: 0
+        });
+
+        gsap.to("#name2", {
+            scrollTrigger: {
+                trigger: "#projects-trigger",
+                start: "+=1000",
+                end: "+=2000",
+                scrub: 1,
+            },
+            opacity: 1
+        });
+
+        // كابشن 1 (نص أول صورة)
+        gsap.to(".caption-1", {
+            scrollTrigger: {
+                trigger: "#projects-trigger",
+                start: "top top",
+                end: "bottom top", // يفضل ظاهر طول فترة السكروول للسيكشن
+                scrub: true,
+                toggleActions: "play none none reverse",
+                end: "+=1000", // مدة ظهور الكابشن الأولى (تقدر تغيرها حسب طول الصورة)
+
+
+            },
+            opacity: 1,
+            y: 0,
+        });
+
+
+
+        // كابشن 2 (نص الصورة الثانية)
+        gsap.to(".caption-2", {
+            scrollTrigger: {
+                trigger: "#projects-trigger",
+                start: "center top",
+                end: "bottom top",
+                scrub: true,
+            },
+            opacity: 1,
+            y: 0,
+        });
+
+
+    </script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        const newsSwiper = new Swiper('.news-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            spaceBetween: 30,
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+    </script>
+    <script>
+        const swiper = new Swiper(".clients-grid-swiper", {
+            slidesPerView: 3,
+            grid: {
+                rows: 2,
+                fill: "row",
+            },
+            spaceBetween: 30,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 4,
+                    grid: {
+                        rows: 2,
+                    },
+                },
+                1024: {
+                    slidesPerView: 6,
+                    grid: {
+                        rows: 2,
+                    },
+                },
+            },
+        });
+    </script>
+
+
+</body>
+
+<main>
+    <section style="height: 100vh; display: flex; justify-content: center; align-items: center;"></section>
+</main>
+
+</html>
