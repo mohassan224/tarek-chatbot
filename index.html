@@ -445,7 +445,7 @@
                 }
             });
 
-        function handleChatbotInput() {
+        async function handleChatbotInput() {
             const userText = chatbotInput.value.trim();
             if (!userText) return;
 
@@ -456,19 +456,17 @@
             const typingDiv = document.createElement("div");
             typingDiv.className = "bot-msg typing-msg";
             typingDiv.innerHTML = `
-  <img src="images/bot-avatar.svg" class="chat-avatar" />
+  <img src="images/robot.gif" class="chat-avatar" />
   <span class="typing-dots"><span></span><span></span><span></span></span>
 `;
             chatbotMessages.appendChild(typingDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             typingSound.play();
 
-            setTimeout(() => {
-                typingDiv.remove();
-                const reply = getChatbotReply(userText);
-                appendMessage(reply.text || reply, "bot-msg", "images/bot-avatar.svg", reply.link, reply.image);
-                chatSound.play();
-            }, 1200);
+            const reply = await getChatbotReply(userText);
+            typingDiv.remove();
+            appendMessage(reply.text || reply, "bot-msg", "images/bot-avatar.svg", reply.link, reply.image);
+            chatSound.play();
         }
 
         function appendMessage(text, className, avatar, link = null, image = null) {
