@@ -484,7 +484,7 @@
 
         async function getChatbotReply(input) {
             try {
-                const res = await fetch("/api/gpt", {
+                const res = await fetch("/api/chat", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ message: input })
