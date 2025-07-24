@@ -439,6 +439,12 @@
         function toggleChatbot() {
             chatbot.classList.toggle("collapsed");
         }
+
+        window.fetch = (...args) => {
+            console.warn("❌ تم تعطيل fetch تلقائيًا في الشات بوت", args);
+            return Promise.reject("fetch disabled");
+        };
+
     </script>
     </script>
     <script>
