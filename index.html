@@ -409,7 +409,7 @@
         </div>
         <div class="chatbot-body" id="chatbot-messages">
             <div class="bot-msg">
-                <img src="images/" alt="bot" class="chat-avatar">
+                <img src="images/robot.gif" alt="bot" class="chat-avatar">
                 <span>أهلاً بك في شركة طارق إسماعيل! كيف يمكنني مساعدتك؟</span>
             </div>
         </div>
@@ -455,7 +455,10 @@
             // typing indicator
             const typingDiv = document.createElement("div");
             typingDiv.className = "bot-msg typing-msg";
-            typingDiv.innerHTML = '<img src="images/bot-avatar.svg" class="chat-avatar" /><span>...</span>';
+            typingDiv.innerHTML = `
+  <img src="images/bot-avatar.svg" class="chat-avatar" />
+  <span class="typing-dots"><span></span><span></span><span></span></span>
+`;
             chatbotMessages.appendChild(typingDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             typingSound.play();
