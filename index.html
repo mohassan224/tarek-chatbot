@@ -361,72 +361,6 @@
             </div>
         </form>
     </section>
-
-    <section class="contact-section">
-        <div class="contact-container">
-            <h2 class="form-title">تواصل معنا</h2>
-            <p>يسعدنا التواصل معكم عبر الوسائل التالية:</p>
-            <ul class="contact-list">
-                <li><img src="images/call.png" alt="Phone" class="icon"> <a href="tel:+201234567890">+201022776369</a>
-                </li>
-                <li><img src="images/mail.png" alt="Email" class="icon"> <a
-                        href="mailto:info@tarek-ismail.com">info@tarek-ismail.com</a></li>
-                <li><img src="images/pin.png" alt="Location" class="icon"> مدينة 6 اكتوبر - الحصري عمارة 36 المحور
-                    المركزي امام جامعة 6 اكتوبر
-                </li>
-                <li><img src="images/whatsapp.png" alt="WhatsApp" class="icon"> <a href="https://wa.me/201234567890"
-                        target="_blank">راسلنا على واتساب</a></li>
-                <li><img src="images/facebook.png" alt="Facebook" class="icon"> <a
-                        href="https://facebook.com/tarekismailrealestate" target="_blank">صفحتنا الرسمية</a></li>
-                <li><img src="images/instagram.png" alt="Instagram" class="icon"> <a
-                        href="https://instagram.com/tarekismail.realestate" target="_blank">@tarekismail.realestate</a>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <div class="map-container">
-
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13797.663934942485!2d30.9489961!3d29.975031!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14585b4e21443c0f%3A0x9c0c1836c8aeb5b0!2z2KfZhNiz2YXYsdmD2Kkg2KfZhNmF2LnZh9iq2Kkg2KfZhNi52YTZiNmE2YrYqSDYp9mE2YXYs9mK2KfYqCDZhNmE2YXZhNmK2YjZhNmE2KfYqg!5e0!3m2!1sar!2seg!4v1721800000000!5m2!1sar!2seg"
-            width="100%" height="300" style="border:0; border-radius: 12px; margin-top: 2rem;" allowfullscreen=""
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <div style="text-align:center; margin-top: 1rem;">
-            <a class="btn-direction" href="https://maps.google.com/?q=29.975031009734927,30.948996119750277"
-                target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:bold">
-                فتح الموقع على الخريطة
-            </a>
-        </div>
-    </div>
-    </div>
-    </section>
-
-    <section class="whatsapp floating section">
-        <a href="https://wa.me/201022776369" class="whatsapp-float" target="_blank" aria-label="راسلنا على واتساب">
-            <img src="images/whatsapp.png" alt="واتساب">
-        </a>
-
-    </section>
-
-    <div class="chatbot-container" id="chatbot">
-        <div class="chatbot-header">
-            👋 مرحبًا بك
-            <button class="chatbot-toggle" onclick="toggleChatbot()">−</button>
-        </div>
-        <div class="chatbot-body" id="chatbot-messages">
-            <div class="bot-msg">
-                <img src="images/robot.gif" alt="bot" class="chat-avatar">
-                <span>أهلاً بك في شركة طارق إسماعيل! كيف يمكنني مساعدتك؟</span>
-            </div>
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="chatbot-input" placeholder="اكتب سؤالك...">
-            <button onclick="handleChatbotInput()">إرسال</button>
-        </div>
-    </div>
-    <audio id="chatSound" src="images/message.wav"></audio>
-    <audio id="typingSound" src="images/typing on phone sound effect..mp3"></audio>
-
     <script>
         const chatbotMessages = document.getElementById("chatbot-messages");
         const chatbotInput = document.getElementById("chatbot-input");
@@ -467,13 +401,13 @@
             const userText = chatbotInput.value.trim();
             if (!userText) return;
 
-            appendMessage(userText, "user-msg", "images/user-avatar.svg");
+            appendMessage(userText, "user-msg", "images/robot.gif");
             chatbotInput.value = "";
 
             const typingDiv = document.createElement("div");
             typingDiv.className = "bot-msg typing-msg";
             typingDiv.innerHTML = `
-            <img src="images/.gif" class="chat-avatar" />
+            <img src="images/robot.gif" class="chat-avatar" />
             <span class="typing-dots"><span></span><span></span><span></span></span>
         `;
             chatbotMessages.appendChild(typingDiv);
@@ -482,7 +416,7 @@
 
             const reply = await getChatbotReply(userText);
             typingDiv.remove();
-            appendMessage(reply.text || reply, "bot-msg", "images/bot-avatar.svg", reply.link, reply.image);
+            appendMessage(reply.text || reply, "bot-msg", "images/robot.gif", reply.link, reply.image);
             chatSound.play();
         }
 
@@ -499,19 +433,7 @@
 
         async function getChatbotReply(input) {
             const key = Object.keys(botResponses).find(k => input.includes(k));
-            if (key) return botResponses[key];
-
-            try {
-                const res = await fetch("https://tarek-chatbot.vercel.app/api/chat", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ message: input })
-                });
-                const data = await res.json();
-                return { text: data.reply };
-            } catch (e) {
-                return botResponses["افتراضي"] || { text: "⚠️ حدث خطأ أثناء الاتصال بالخدمة." };
-            }
+            return botResponses[key] || botResponses["افتراضي"];
         }
 
         function toggleChatbot() {
