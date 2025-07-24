@@ -361,6 +361,32 @@
             </div>
         </form>
     </section>
+
+    <div id="chatbot" class="chatbot-container">
+        <div class="chatbot-header" onclick="toggleChatbot()">
+            🤖 مساعد طارق إسماعيل العقاري
+        </div>
+        <div class="chatbot-body">
+            <div id="chatbot-messages" class="chatbot-messages"></div>
+            <div class="chatbot-input-area">
+                <input id="chatbot-input" type="text" placeholder="اسأل عن شيء..."
+                    onkeydown="if(event.key==='Enter'){handleChatbotInput()}" />
+                <button onclick="handleChatbotInput()">إرسال</button>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/201022776369" target="_blank" id="whatsapp-button"
+        style="position: fixed; bottom: 100px; right: 20px; background: #25D366; color: white; padding: 12px 20px; border-radius: 50px; font-size: 18px; z-index: 9999; text-decoration: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+        💬 واتساب
+    </a>
+
+    <audio id="chatSound"
+        src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c1e59f3cb.mp3?filename=message-pop-alert-130732.mp3"></audio>
+    <audio id="typingSound"
+        src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_23b3b05a6d.mp3?filename=typing-typing-6763.mp3"></audio>
+
+
     <script>
         const chatbotMessages = document.getElementById("chatbot-messages");
         const chatbotInput = document.getElementById("chatbot-input");
