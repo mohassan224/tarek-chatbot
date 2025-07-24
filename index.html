@@ -482,12 +482,18 @@
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
 
-        function getChatbotReply(input) {
-            const t = input.toLowerCase();
-            for (const key in botResponses) {
-                if (key !== "افتراضي" && t.includes(key)) return botResponses[key];
+        async function getChatbotReply(input) {
+            try {
+                const res = await fetch("/api/gpt", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: input })
+                });
+                const data = await res.json();
+                return { text: data.reply };
+            } catch (e) {
+                return { text: "⚠️ حدث خطأ أثناء الاتصال بالخدمة." };
             }
-            return botResponses["افتراضي"] || { "text": "..." };
         }
 
         function toggleChatbot() {
